@@ -1,29 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Articles</h1>
+<% @articles.each do |article| %>
+  <div class="blog-post">
+    <h2 class="blog-post-title">
+      <%= link_to article.title, article_path(article) %>
+    </h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <p class="blog-post-meta">
+      Written by <a href="#">Mark</a> on January 1, 2014
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      &raquo;
 
-<br>
+      <%= link_to '#' do %>
+        <%= rand(100) %> comments
+      <% end %>
+    </p>
 
-<%= link_to 'New Article', new_article_path %>
+    <p><%= article.body %></p>
+
+    <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+    <hr>
+    <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+    <blockquote>
+      <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    </blockquote>
+  </div>
+
+  <h1 style="text-align:center; color: whitesmoke; font-size:2em;">&sect;</h1>
+  <br/>
+<% end %>

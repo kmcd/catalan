@@ -52,7 +52,7 @@ guard :rails, daemon: true, server:'thin' do
 end
 
 guard :livereload do
-  watch(%r{app/assets/.+\.(css|js|html)})
+  watch(%r{app/assets/.+\.(css|js|html|scss)})
   watch(%r{app/controllers/.+\.rb})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{app/lib/.+\.rb})

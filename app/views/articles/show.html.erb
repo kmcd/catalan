@@ -1,14 +1,177 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div class="blog-post">
+  <h2 class="blog-post-title">
+    <%= @article.title %>
+    <small>
+      &rarr;
+      <%= link_to 'EDIT', edit_article_path(@article) %>
+    </small>
+  </h2>
 
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
+  <p class="blog-post-meta">
+    Written by <a href="#">Mark</a> on January 1, 2014
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+    &raquo;
+
+    <%= link_to '#' do %>
+      <%= rand(100) %> comments
+    <% end %>
+  </p>
+
+  <p><%= @article.body %></p>
+
+  <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+  <hr>
+  <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+  <blockquote>
+    <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+  </blockquote>
+  <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+  <h2>Heading</h2>
+  <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+  <h3>Sub-heading</h3>
+  <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+  <pre><code>Example code block</code></pre>
+  <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+  <h3>Sub-heading</h3>
+  <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <ul>
+    <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+    <li>Donec id elit non mi porta gravida at eget metus.</li>
+    <li>Nulla vitae elit libero, a pharetra augue.</li>
+  </ul>
+  <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+  <ol>
+    <li>Vestibulum id ligula porta felis euismod semper.</li>
+    <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+    <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+  </ol>
+  <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+</div>
+
+<h4 style="color:gray;">
+  Would you like to <%= link_to "comment", '#' %> ?
+</h4>
+
+<br/>
+
+<div class="media">
+  <%# TODO: add grid container instead of text flowing around image %>
+
+  <a class="pull-right" href="#" >
+    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
+  </a>
+
+  <blockquote>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    </p>
+
+    <footer>
+      <cite title="Source Title">
+        <%= link_to 'Joan Smith', '#' %>
+      </cite>
+      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
+    </footer>
+  </blockquote>
+</div>
+
+<div class="media">
+  <a class="pull-right" href="#" >
+    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
+  </a>
+
+  <blockquote>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+
+    </p>
+
+    <footer>
+      <cite title="Source Title">
+        <%= link_to 'Joan Smith', '#' %>
+      </cite>
+      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
+    </footer>
+  </blockquote>
+</div>
+
+<div class="media">
+  <a class="pull-right" href="#" >
+    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
+  </a>
+
+  <blockquote>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+
+    </p>
+
+    <footer>
+      <cite title="Source Title">
+        <%= link_to 'Joan Smith', '#' %>
+      </cite>
+      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
+    </footer>
+  </blockquote>
+</div>
+
+<div class="media">
+  <%# TODO: add grid container instead of text flowing around image %>
+
+  <a class="pull-right" href="#" >
+    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
+  </a>
+
+  <blockquote>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    </p>
+
+    <footer>
+      <cite title="Source Title">
+        <%= link_to 'Joan Smith', '#' %>
+      </cite>
+      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
+    </footer>
+  </blockquote>
+</div>
+
+<br/>
+
+<div class="well" style="background-color:AntiqueWhite;">
+  <form role="form">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Comment</label>
+      <textarea class="form-control" rows="4"cols="10"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Name">
+    </div>
+
+  <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Website</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="e.g. http://example.org">
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Post comment
+    </button>
+  </form>
+</div>
+
+<br/>
+
+<h1 style="text-align:center; color: whitesmoke; font-size:2em;">&sect;</h1>

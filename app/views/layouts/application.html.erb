@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
   <title>Catalan</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
 </head>
 <body>
+  <div class="container">
+    <div class="blog-header">
+      <h1>
+        <%= link_to 'Catalan Blog', root_path %>
 
-<%= yield %>
+        <small>
+          &hellip; written by cats for cats &mdash; from Catalonia!
+        </small>
+      </h1>
+
+      <%# if logged in %>
+      <p>
+        &rArr;
+        WRITE A <%= link_to 'NEW ARTICLE', new_article_path %> 
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8 blog-main">
+        <%= yield %>
+      </div>
+
+      <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="sidebar-module">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="blog-footer">
+  </footer>
 
 </body>
 </html>

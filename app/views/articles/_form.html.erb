@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+    <%= f.text_field :title, class:'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Article</label>
+    <%= f.text_area :body, rows:15, class:'form-control'  %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <button type="submit" class="btn btn-default">Preview</button>
+  <button type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-danger">Delete</button>
 <% end %>
