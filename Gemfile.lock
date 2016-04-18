@@ -57,6 +57,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
     daemons (1.2.3)
+    dalli (2.7.6)
     debug_inspector (0.0.2)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
@@ -174,6 +175,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    redcarpet (3.3.4)
     ruby-prof (0.15.9)
     ruby-progressbar (1.7.5)
     sass (3.4.22)
@@ -222,6 +224,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.1.0)
+  dalli
   guard
   guard-bundler
   guard-livereload (~> 2.4)
@@ -234,6 +237,7 @@ DEPENDENCIES
   rack-livereload
   rails (= 4.2.6)
   rails_12factor
+  redcarpet
   ruby-prof
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

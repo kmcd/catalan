@@ -11,11 +11,6 @@ class ArticlesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:articles)
   end
 
-  test "should show article" do
-    get :show, id: @article
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, id: @article
     assert_response :success
@@ -35,7 +30,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 end
 
-class ArticleNewControllerTest < ActionController::TestCase
+class ArticlesNewControllerTest < ActionController::TestCase
   setup do
     @controller = ArticlesController.new
   end
@@ -56,7 +51,7 @@ class ArticleNewControllerTest < ActionController::TestCase
   end
 end
 
-class ArticleCreateControllerTest < ActionController::TestCase
+class ArticlesCreateControllerTest < ActionController::TestCase
   setup do
     @controller = ArticlesController.new
   end
@@ -117,5 +112,46 @@ class ArticleCreateControllerTest < ActionController::TestCase
         end
       end
     end
+  end
+end
+
+class ArticlesShowControllerTest < ActionController::TestCase
+  setup do
+    @controller = ArticlesController.new
+    @article = articles(:one)
+  end
+
+  test "should show article" do
+    get :show, id: @article
+    assert_response :success
+    assert_template :show
+  end
+
+  test "should have an seo friendly url" do
+    assert_routing \
+      "/articles/#{@article.id}-#{@article.title.parameterize}", \
+      { controller: "articles", action: "show", id: @article.to_param }
+  end
+
+  test "should render body as markdown" do
+    article_content = Redcarpet::Markdown.
+      new(Redcarpet::Render::HTML).
+      render @article.body
+    get :show, id: @article
+
+    assert_select '.article .content h1', /Heading ONE/m
+  end
+
+  test "should display created date" do
+    get :show, id: @article
+
+    assert_select '.article .meta', \
+      /#{@article.created_at.to_s(:long_ordinal)}/m
+  end
+
+  test "should display author" do
+    get :show, id: @article
+
+    assert_select '.article .meta', /Anonymous/m
   end
 end

@@ -2,7 +2,7 @@
 
 one:
   title: MyString
-  body: MyText
+  body: '# Heading ONE'
 
 two:
   title: MyString
