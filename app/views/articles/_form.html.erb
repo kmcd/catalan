@@ -1,27 +1,33 @@
 <%= form_for(@article) do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+  <div class="form-group <%= 'has-error' if @article.errors.any? %>">
+    <label class="control-label" for="title">
+      Title
 
-      <ul>
-      <% @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @article.errors[:title].any? %>
+        <%= @article.errors[:title].join(', ') %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </label>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Title</label>
     <%= f.text_field :title, class:'form-control' %>
   </div>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Article</label>
+  <div class="form-group <%= 'has-error' if @article.errors.any? %>">
+    <label class="control-label" for="body">
+      Body
+
+      <% if @article.errors[:body].any? %>
+        <%= @article.errors[:body].join(', ') %>
+      <% end %>
+    </label>
+
     <%= f.text_area :body, rows:15, class:'form-control'  %>
+  
+    <p class="help-block">
+      Written as <%= link_to 'markdown', 'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet' %>
+      &amp; rendered to html.
+    </small>
   </div>
 
-  <button type="submit" class="btn btn-default">Preview</button>
-  <button type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-primary">Save</button>
   <button type="submit" class="btn btn-danger">Delete</button>
 <% end %>

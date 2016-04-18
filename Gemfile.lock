@@ -87,6 +87,9 @@ GEM
       guard (~> 2.8)
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
+    guard-minitest (2.4.4)
+      guard-compat (~> 1.2)
+      minitest (>= 3.0)
     guard-rails (0.7.2)
       guard (~> 2.11)
       guard-compat (~> 1.0)
@@ -171,6 +174,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    ruby-prof (0.15.9)
     ruby-progressbar (1.7.5)
     sass (3.4.22)
     sass-rails (5.0.4)
@@ -221,6 +225,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-livereload (~> 2.4)
+  guard-minitest
   guard-rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -229,6 +234,7 @@ DEPENDENCIES
   rack-livereload
   rails (= 4.2.6)
   rails_12factor
+  ruby-prof
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

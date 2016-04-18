@@ -45,10 +45,12 @@ group :development do
   gem 'guard-rails'
   gem 'guard-livereload', '~> 2.4', require: false
   gem 'rack-livereload'
+  gem 'guard-minitest'
 end
 
 group :test do
   gem 'minitest-reporters'
+  gem 'ruby-prof'
 end
 
 group :production do
