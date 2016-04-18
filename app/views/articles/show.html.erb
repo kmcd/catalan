@@ -11,7 +11,7 @@
 
   <p class="meta">
     Written by <%= link_to Rails.application.config_for(:author)['name'], root_url %>
-    on <%= @article.created_at.to_s(:long_ordinal) %>
+    on <%= local_time @article.created_at %>
 
     &raquo;
 
@@ -21,7 +21,7 @@
   </p>
 
   <div class="content">
-    
+
     <% cache [ @article, :body ] do %>
       <%= Redcarpet::Markdown.
             new(Redcarpet::Render::HTML).

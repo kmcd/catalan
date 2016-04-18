@@ -145,8 +145,10 @@ class ArticlesShowControllerTest < ActionController::TestCase
   test "should display created date" do
     get :show, id: @article
 
+    # loccal time gem default time
+    # https://github.com/basecamp/local_time#time-and-date-helpers
     assert_select '.article .meta', \
-      /#{@article.created_at.to_s(:long_ordinal)}/m
+      /#{@article.created_at.strftime('%B %e, %Y %l:%M%P')}/m
   end
 
   test "should display author" do
