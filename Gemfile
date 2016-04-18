@@ -47,6 +47,10 @@ group :development do
   gem 'rack-livereload'
 end
 
+group :test do
+  gem 'minitest-reporters'
+end
+
 group :production do
   gem 'rails_12factor'
 end
