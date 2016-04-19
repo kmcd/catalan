@@ -119,6 +119,7 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
@@ -130,6 +131,8 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     multi_json (1.11.2)
     nenv (0.3.0)
     nokogiri (1.6.7.2)
@@ -245,6 +248,7 @@ DEPENDENCIES
   jquery-rails
   local_time
   minitest-reporters
+  mocha
   pg (~> 0.15)
   rack-livereload
   rails (= 4.2.6)

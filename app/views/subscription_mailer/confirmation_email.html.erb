@@ -1,6 +1,5 @@
 <h1>Please confirm your subscription:</h1>
 
 <p>
-  <%= link_to confirmation_subscription_url(@subscription,
-        token:@subscription.confirmation_token) %>
+  <a href="<%= @confirmation_link %>"><%= @confirmation_link %></a>
 </p>

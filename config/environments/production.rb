@@ -84,4 +84,6 @@ Rails.application.configure do
       :failover => true,
       :socket_timeout => 1.5,
       :socket_failure_delay => 0.2 }
+      
+  config.action_mailer.default_url_options = { host:'catalan.herokuapp.com' }
 end

@@ -55,6 +55,7 @@ group :development do
 end
 
 group :test do
+  gem 'mocha'
   gem 'minitest-reporters'
   gem 'ruby-prof'
 end

@@ -5,15 +5,14 @@ class SubscriptionsControllerTest < ActionController::TestCase
     @subscription = subscriptions(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:subscriptions)
-  end
-
-  test "should get new" do
+  test "new should have form elements" do
     get :new
     assert_response :success
+
+    assert_select "form[action='/subscriptions'][method='post']" do
+      assert_select "input[type='text'][name='subscription[email]']"
+      assert_select "button[type='submit']", 'Send Email Confirmation'
+    end
   end
 
   test "should create subscription" do
@@ -21,29 +20,43 @@ class SubscriptionsControllerTest < ActionController::TestCase
       post :create, subscription: { email: @subscription.email }
     end
 
-    assert_redirected_to subscription_path(assigns(:subscription))
+    assert_redirected_to root_url
+    assert_match /Please check your email to confirm your subscription/i, flash.notice
+    # TODO: assert_select flash on page (with layout test?)
   end
 
-  test "should show subscription" do
-    get :show, id: @subscription
-    assert_response :success
-  end
+  test "should display invalid email errors" do
+    [ 'foo@ad', '' ].each do |invalid_email|
+      assert_no_difference('Subscription.count') do
+        post :create, subscription: { email:invalid_email  }
+      end
 
-  test "should get edit" do
-    get :edit, id: @subscription
-    assert_response :success
-  end
+      assert_template :new
 
-  test "should update subscription" do
-    patch :update, id: @subscription, subscription: { email: @subscription.email }
-    assert_redirected_to subscription_path(assigns(:subscription))
-  end
-
-  test "should destroy subscription" do
-    assert_difference('Subscription.count', -1) do
-      delete :destroy, id: @subscription
+      assert_select "form[action='/subscriptions'][method='post']" do
+        assert_select "div.form-group.has-error" do
+          css_select("label.control-label[for='email']").each do |label|
+            assigns(:subscription).errors.messages.each do |error|
+              assert_match /#{error}/m, label.text.squish
+            end
+          end
+        end
+      end
     end
+  end
+  
+  test "should have confirmation link" do
+    assert_routing \
+      "/subscriptions/#{@subscription.id}/confirmation", \
+      { controller: "subscriptions", action: "confirmation", id: "#{@subscription.id}" }
+  end
+  
+  test "should confirm email subscription" do
+    get :confirmation, id:@subscription,
+      token:@subscription.confirmation_token
 
-    assert_redirected_to subscriptions_path
+    assert_redirected_to root_url
+    assert_match /subscription confirmed/i, flash.notice
+    assert_equal true, assigns(:subscription).confirmed
   end
 end

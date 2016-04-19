@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
+  email: subscriber_1@example.org
+  confirmation_token: 123
+  confirmed: false
 
 two:
-  email: MyString
+  email: subscriber_1@example.org
+  confirmation_token: 123
+  confirmed: false
