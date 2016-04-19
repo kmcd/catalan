@@ -1,20 +1,23 @@
-<div class="media">
-  <a class="pull-right" href="#" >
-    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
-  </a>
-
-  <blockquote>
-    <%= content_tag :p, auto_link(simple_format(sanitize(comment.body))) %>
-
-    <footer>
-      <cite title="source title">
-        <% if comment.website.present? %>
-          <%= link_to comment.name, comment.website %>
-        <% else %>
-          <%= comment.name %>
-        <% end %>
-      </cite>
-      <span>&nbsp; <%= local_time comment.created_at %></span>
-    </footer>
-  </blockquote>
-</div>
+<% cache comment do  %>
+  <div class="media">
+    <a class="pull-right" href="#" >
+      <%= image_tag avatar_url(comment.email), class:'media-object avatar', 
+            size:'75x75' %>
+    </a>
+  
+    <blockquote>
+      <%= content_tag :p, auto_link(simple_format(sanitize(comment.body))) %>
+  
+      <footer>
+        <cite title="source title">
+          <% if comment.website.present? %>
+            <%= link_to comment.name, comment.website %>
+          <% else %>
+            <%= comment.name %>
+          <% end %>
+        </cite>
+        <span>&nbsp; <%= local_time comment.created_at %></span>
+      </footer>
+    </blockquote>
+  </div>
+<% end %>
