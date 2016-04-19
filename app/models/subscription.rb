@@ -6,6 +6,8 @@ class Subscription < ActiveRecord::Base
   before_create :generate_confirmation_token
   after_create  :dispatch_confirmation_email
 
+  scope :list, -> { where(confirmed:true).uniq :email }
+
   def confirmed?(token)
     return unless self.confirmation_token == token
     update confirmed:true
