@@ -13,15 +13,17 @@
     Written by <%= link_to Rails.application.config_for(:author)['name'], root_url %>
     on <%= local_time @article.created_at %>
 
-    &raquo;
+    <% unless @article.comments.count.zero? %>
+      &raquo;
 
-    <%= link_to '#' do %>
-      <%= rand(100) %> comments
+      <%= link_to anchor:'comments' do %>
+        <%= @article.comments.count %>
+        comments
+      <% end %>
     <% end %>
   </p>
 
   <div class="content">
-
     <% cache [ @article, :body ] do %>
       <%= Redcarpet::Markdown.
             new(Redcarpet::Render::HTML).
@@ -38,6 +40,8 @@
 <br/>
 
 <div class="comments">
+  <%= content_tag :a, '', :name => 'comments' %>
+
   <%= render partial:'comments/show',
         collection:@article.comments,
         as:'comment' %>
