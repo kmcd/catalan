@@ -37,117 +37,17 @@
 
 <br/>
 
-<div class="media">
-  <a class="pull-right" href="#" >
-    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
-  </a>
-
-  <blockquote>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-    </p>
-
-    <footer>
-      <cite title="Source Title">
-        <%= link_to 'Joan Smith', '#' %>
-      </cite>
-      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
-    </footer>
-  </blockquote>
-</div>
-
-<div class="media">
-  <a class="pull-right" href="#" >
-    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
-  </a>
-
-  <blockquote>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-
-    </p>
-
-    <footer>
-      <cite title="Source Title">
-        <%= link_to 'Joan Smith', '#' %>
-      </cite>
-      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
-    </footer>
-  </blockquote>
-</div>
-
-<div class="media">
-  <a class="pull-right" href="#" >
-    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
-  </a>
-
-  <blockquote>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-
-    </p>
-
-    <footer>
-      <cite title="Source Title">
-        <%= link_to 'Joan Smith', '#' %>
-      </cite>
-      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
-    </footer>
-  </blockquote>
-</div>
-
-<div class="media">
-  <a class="pull-right" href="#" >
-    <img class="media-object avatar" src="http://placekitten.com/76/76" alt="">
-  </a>
-
-  <blockquote>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-    </p>
-
-    <footer>
-      <cite title="Source Title">
-        <%= link_to 'Joan Smith', '#' %>
-      </cite>
-      <span>&nbsp; August 25, 2014 at 9:30 PM</span>
-    </footer>
-  </blockquote>
+<div class="comments">
+  <%= render partial:'comments/show',
+        collection:@article.comments,
+        as:'comment' %>
 </div>
 
 <br/>
 
-<div class="well" style="background-color:AntiqueWhite;">
-  <form role="form">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Comment</label>
-      <textarea class="form-control" rows="4"cols="10"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="exampleInputEmail1">Name</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Name">
-    </div>
-
-  <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-    </div>
-
-    <div class="form-group">
-      <label for="exampleInputEmail1">Website</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="e.g. http://example.org">
-    </div>
-
-    <button type="submit" class="btn btn-primary">
-      Post comment
-    </button>
-  </form>
-</div>
+<%= render partial:'comments/form',
+      object:@article.comments.new,
+      as:'comment' %>
 
 <br/>
 

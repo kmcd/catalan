@@ -1,0 +1,69 @@
+<%= form_for([@article,comment], role:'form', remote:true) do |f| %>
+  <div class="well" style="background-color:AntiqueWhite;">
+
+    <div class="form-group <%= 'has-error' if comment.errors[:body].any? %>">
+      <label class="control-label" for="body">
+        Comment
+
+        <small>
+          &mdash;
+          <% if comment.errors[:body].any? %>
+            <%= comment.errors[:body].join ', ' %>
+          <% else %>
+            required
+          <% end %>
+        </small>
+      </label>
+
+      <%= f.text_area :body, rows:5, class:'form-control'  %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if comment.errors[:name].any? %>">
+      <label class="control-label" for="name">
+        Name
+
+        <small>
+          &mdash;
+          <% if comment.errors[:name].any? %>
+            <%= comment.errors[:name].join ', ' %>
+          <% else %>
+            required
+          <% end %>
+        </small>
+      </label>
+
+      <%= f.text_field :name, class:'form-control' %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if comment.errors[:email].any? %>">
+      <label class="control-label" for="name">
+        Email
+
+        <small>
+          &mdash;
+          <% if comment.errors[:email].any? %>
+            <%= comment.errors[:email].join ', ' %>
+          <% else %>
+            <em>required</em> but NEVER published
+          <% end %>
+        </small>
+      </label>
+
+      <%= f.text_field :email, class:'form-control' %>
+    </div>
+
+    <div class="form-group <%= 'has-error' if comment.errors[:website].any? %>">
+      <label class="control-label" for="website">
+        Website
+
+        <small> &mdash; optional </small>
+      </label>
+
+      <%= f.text_field :website, class:'form-control' %>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Post comment
+    </button>
+  </div>
+<% end %>

@@ -145,7 +145,7 @@ class ArticlesShowControllerTest < ActionController::TestCase
   test "should display created date" do
     get :show, id: @article
 
-    # loccal time gem default time
+    # local time gem default time
     # https://github.com/basecamp/local_time#time-and-date-helpers
     assert_select '.article .meta', \
       /#{@article.created_at.strftime('%B %e, %Y %l:%M%P')}/m
@@ -155,5 +155,28 @@ class ArticlesShowControllerTest < ActionController::TestCase
     get :show, id: @article
 
     assert_select '.article .meta', /Anonymous/m
+  end
+end
+
+class ArticlesCommentsControllerTest < ActionController::TestCase
+  setup do
+    @controller = ArticlesController.new
+    @article = articles(:one)
+  end
+
+  test "should have new comment form elements" do
+    get :show, id: @article
+
+    assert_select "form[action='#{article_comments_path(@article,@comment)}'][method='post']" do
+      assert_select "textarea[name='comment[body]']"
+      
+      %w[ name website email ].each do |field| 
+        assert_select "input[type='text'][name='comment[#{field}]']"
+      end
+    end
+  end
+
+  test "should display comments" do
+    skip
   end
 end
