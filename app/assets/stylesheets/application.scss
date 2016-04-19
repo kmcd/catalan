@@ -31,3 +31,8 @@ $icon-font-path: "fonts/bootstrap/";
   url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
   url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+
+.bg-info.notice {
+  padding: 0.6em;
+  text-align: center;
+}

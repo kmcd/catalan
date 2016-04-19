@@ -1,0 +1,19 @@
+<div class="well">
+  <%= form_for(@subscription) do |f| %>
+    <div class="form-group <%= 'has-error' if @subscription.errors[:email].any? %>">
+      <label class="control-label" for="email">
+        Email
+  
+        <% if @subscription.errors[:email].any? %>
+          <%= @subscription.errors[:email].join(', ') %>
+        <% end %>
+      </label>                             
+  
+      <%= f.text_field :email, class:'form-control' %>
+    </div>
+                                      
+    <button type="submit" class="btn btn-primary">
+      Send Email Confirmation
+    </button>
+  <% end %>
+</div>

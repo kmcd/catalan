@@ -78,3 +78,7 @@ guard :minitest do
   watch(%r{^test/.+_test\.rb$})
   watch(%r{^test/test_helper\.rb$}) { 'test' }
 end
+
+guard 'delayed', :environment => 'development' do
+  watch(%r{^app/(.+)\.rb})
+end

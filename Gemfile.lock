@@ -59,6 +59,11 @@ GEM
     daemons (1.2.3)
     dalli (2.7.6)
     debug_inspector (0.0.2)
+    delayed_job (4.1.1)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.1.0)
+      activerecord (>= 3.0, < 5)
+      delayed_job (>= 3.0, < 5)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -228,7 +233,9 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.1.0)
+  daemons
   dalli
+  delayed_job_active_record
   guard
   guard-bundler
   guard-livereload (~> 2.4)

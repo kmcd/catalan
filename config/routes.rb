@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :subscriptions do
+    member { get :confirmation }
+  end
+
   resources :articles do
     resources :comments, only: [:create]
   end

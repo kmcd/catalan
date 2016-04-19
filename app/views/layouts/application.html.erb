@@ -30,7 +30,20 @@
       <p>
         &rArr;
         WRITE A <%= link_to 'NEW ARTICLE', new_article_path %> 
+         | 
+        <%= link_to 'Subscribe with your email', new_subscription_path %>
+        &amp; you won&apos;t miss another article!
       </p>
+      
+      <% if flash.notice %>
+        <div class="panel panel-info"> 
+          <div class="panel-heading"> 
+            <h3 class="panel-title">
+              <%= flash.notice %>
+            </h3> 
+          </div> 
+        </div>
+      <% end %>
     </div>
 
     <div class="row">
