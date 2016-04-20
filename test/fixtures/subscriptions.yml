@@ -4,8 +4,10 @@ one:
   email: subscriber_1@example.org
   confirmation_token: 123
   confirmed: false
+  unsubscribe_token: 'abc'
 
 two:
   email: subscriber_1@example.org
   confirmation_token: 123
   confirmed: false
+  unsubscribe_token: 'xzy'

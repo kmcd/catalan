@@ -8,7 +8,7 @@ class NotifySubscribersJobTest < ActiveJob::TestCase
   end
   
   test "should notify all subscribers" do
-    assert_enqueued_jobs Subscription.list.count do
+    assert_enqueued_jobs Subscription.list.size do
       NotifySubscribersJob.perform_now @article
     end
   end

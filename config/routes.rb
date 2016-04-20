@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     member { get :confirmation }
   end
 
+  get '/unsubscribe/:token',
+    to: 'subscriptions#unsubscribe',
+    as:'unsubscribe'
+
   resources :articles do
     resources :comments, only: [:create]
   end

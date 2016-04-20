@@ -44,13 +44,13 @@ class SubscriptionsControllerTest < ActionController::TestCase
       end
     end
   end
-  
-  test "should have confirmation link" do
+
+  test "should have confirmation url" do
     assert_routing \
       "/subscriptions/#{@subscription.id}/confirmation", \
       { controller: "subscriptions", action: "confirmation", id: "#{@subscription.id}" }
   end
-  
+
   test "should confirm email subscription" do
     get :confirmation, id:@subscription,
       token:@subscription.confirmation_token
@@ -58,5 +58,21 @@ class SubscriptionsControllerTest < ActionController::TestCase
     assert_redirected_to root_url
     assert_match /subscription confirmed/i, flash.notice
     assert_equal true, assigns(:subscription).confirmed
+  end
+
+  test "should have unsubscribe url" do
+    assert_routing \
+      "/unsubscribe/#{@subscription.unsubscribe_token}", \
+      { controller: "subscriptions",
+        action: "unsubscribe",
+        token: "#{@subscription.unsubscribe_token}" }
+  end
+
+  test "should unsubsuscribe from notification list" do
+    get :unsubscribe, token:@subscription.unsubscribe_token
+
+    assert_redirected_to root_url
+    assert_match /subscription cancelled/i, flash.notice
+    assert_equal true, @subscription.reload.unsubscribed
   end
 end

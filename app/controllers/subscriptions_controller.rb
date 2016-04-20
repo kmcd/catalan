@@ -32,6 +32,17 @@ class SubscriptionsController < ApplicationController
 
     redirect_to root_url
   end
+  
+  # GET /unsubscribe/:token
+  def unsubscribe
+    flash.notice = if Subscription.unsubscribe(params[:token])
+      "Subscription cancelled"
+    else
+      "Subscription NOT cancelled - try again please."
+    end
+
+    redirect_to root_url
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

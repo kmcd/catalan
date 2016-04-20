@@ -51,13 +51,22 @@ class SubscriptionNotificationMailerTest < ActionMailer::TestCase
     assert_equal [subscription.email], email.to
     assert_match /New article #{@article.title}/i, email.subject
   end
-
+  
   test "should contain link to article" do
     article_url = Regexp.
       escape "http://example.org/articles/#{article.to_param}"
 
     assert_match /#{article_url}/i, email.text_part.body.to_s.squish
     assert_match /\<a href="#{article_url}"\>/im, email.html_part.body.
+      to_s.squish
+  end
+  
+  test "should add unsubscribe link to notification email" do
+    unsubscribe_link = Regexp.
+      escape "http://example.org/unsubscribe/#{subscription.unsubscribe_token}"
+
+    assert_match /#{unsubscribe_link}/i, email.text_part.body.to_s.squish
+    assert_match /\<a href="#{unsubscribe_link}"\>/im, email.html_part.body.
       to_s.squish
   end
 end
