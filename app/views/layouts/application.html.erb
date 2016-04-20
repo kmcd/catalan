@@ -24,12 +24,13 @@
         <small>
           &hellip; written by cats for cats &mdash; from Catalonia!
         
-          <% if author_signed_in? %>
-            <small>
+          <small>
+            <% if author_signed_in? %>
               <%= link_to 'LOGOUT', destroy_author_session_path,
                     method:'delete' %>
-            </small>
-          <% end %>
+            <% else %>
+               <%= link_to 'LOGIN', new_author_session_path %>
+            <% end %>
         </small>
       </h1>
 
