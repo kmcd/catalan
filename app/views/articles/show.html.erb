@@ -33,11 +33,9 @@
   </div>
 </div>
 
-<h4 style="color:gray;">
+<h4 class="comment">
   Would you like to <%= link_to "comment", '#' %> ?
 </h4>
-
-<br/>
 
 <div class="comments">
   <%= content_tag :a, '', :name => 'comments' %>
@@ -47,12 +45,8 @@
         as:'comment' %>
 </div>
 
-<br/>
-
 <%= render partial:'comments/form',
       object:@article.comments.new,
       as:'comment' %>
 
-<br/>
-
-<h1 style="text-align:center; color: whitesmoke; font-size:2em;">&sect;</h1>
+<h1 class="section">&sect;</h1>

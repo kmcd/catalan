@@ -36,3 +36,21 @@ $icon-font-path: "fonts/bootstrap/";
   padding: 0.6em;
   text-align: center;
 }
+
+h1.section {
+  text-align:center;
+  color: whitesmoke;
+  font-size:2em;
+}
+
+h4.comment {
+  color:gray;
+}
+
+.well.comment {
+  background-color:AntiqueWhite;
+}
+
+div.comment {
+  margin-bottom: 1em;
+}
