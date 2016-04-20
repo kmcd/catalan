@@ -218,4 +218,19 @@ class ArticlesAuthenticationControllerTest < ActionController::TestCase
     post :create, article: { body: 'Hi', title:'1st post' }
     assert_redirected_to new_author_session_url
   end
+  
+  test "should display login link" do
+    get :index
+    login_path = Regexp.escape new_author_session_path
+
+    assert_match /\<a.*href="#{login_path}.*"\>/im, response.body.squish
+  end
+  
+  test "should display logout link" do
+    stub_authentication
+    get :index
+    logout_path = Regexp.escape destroy_author_session_path
+
+    assert_match /\<a.*href="#{logout_path}".*\>/im, response.body.squish
+  end
 end
