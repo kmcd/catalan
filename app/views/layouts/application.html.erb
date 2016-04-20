@@ -23,6 +23,13 @@
 
         <small>
           &hellip; written by cats for cats &mdash; from Catalonia!
+        
+          <% if author_signed_in? %>
+            <small>
+              <%= link_to 'LOGOUT', destroy_author_session_path,
+                    method:'delete' %>
+            </small>
+          <% end %>
         </small>
       </h1>
 
