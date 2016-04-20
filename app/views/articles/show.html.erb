@@ -1,12 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <div class="article">
   <h2 class="title">
     <%= @article.title %>
-    <small>
-      &rarr;
-      <%= link_to 'EDIT', edit_article_path(@article) %>
-    </small>
+  
+    <% if author_signed_in? %>
+      <small>
+        &rarr;
+        <%= link_to 'EDIT', edit_article_path(@article) %>
+      </small>
+    <% end %>
   </h2>
 
   <p class="meta">

@@ -10,6 +10,15 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def stub_authentication
+    @request.env["devise.mapping"] = Devise.mappings[:author]
+    sign_in authors(:one)
+  end
+end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
 end
 
 require 'mocha/mini_test'

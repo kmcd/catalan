@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :authors
+
   resources :subscriptions do
     member { get :confirmation }
   end

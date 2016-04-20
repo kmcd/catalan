@@ -26,22 +26,34 @@
         </small>
       </h1>
 
-      <%# if logged in %>
       <p>
-        &rArr;
-        WRITE A <%= link_to 'NEW ARTICLE', new_article_path %> 
-         | 
+        <% if author_signed_in? %>
+          &rArr;
+          WRITE A <%= link_to 'NEW ARTICLE', new_article_path %>
+           |
+        <% end %>
+
         <%= link_to 'Subscribe with your email', new_subscription_path %>
         &amp; you won&apos;t miss another article!
       </p>
-      
+
       <% if flash.notice %>
-        <div class="panel panel-info"> 
-          <div class="panel-heading"> 
+        <div class="panel panel-info">
+          <div class="panel-heading">
             <h3 class="panel-title">
               <%= flash.notice %>
-            </h3> 
-          </div> 
+            </h3>
+          </div>
+        </div>
+      <% end %>
+
+      <% if flash.alert %>
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= flash.alert %>
+            </h3>
+          </div>
         </div>
       <% end %>
     </div>

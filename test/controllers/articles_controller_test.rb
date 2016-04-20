@@ -3,6 +3,7 @@ require 'test_helper'
 class ArticlesControllerTest < ActionController::TestCase
   setup do
     @article = articles(:one)
+    stub_authentication
   end
 
   test "should get index" do
@@ -33,6 +34,7 @@ end
 class ArticlesNewControllerTest < ActionController::TestCase
   setup do
     @controller = ArticlesController.new
+    stub_authentication
   end
 
   test "should get new" do
@@ -54,6 +56,7 @@ end
 class ArticlesCreateControllerTest < ActionController::TestCase
   setup do
     @controller = ArticlesController.new
+    stub_authentication
   end
 
   test "should create article" do
@@ -169,14 +172,50 @@ class ArticlesCommentsControllerTest < ActionController::TestCase
 
     assert_select "form[action='#{article_comments_path(@article,@comment)}'][method='post']" do
       assert_select "textarea[name='comment[body]']"
-      
-      %w[ name website email ].each do |field| 
+
+      %w[ name website email ].each do |field|
         assert_select "input[type='text'][name='comment[#{field}]']"
       end
     end
   end
 
   test "should display comments" do
-    skip
+    get :show, id: @article
+
+    @article.comments.each do |comment|
+      assert_select ".comments blockquote", /#{comment.body}/m
+    end
+  end
+end
+
+class ArticlesAuthenticationControllerTest < ActionController::TestCase
+  setup do
+    @article = articles(:one)
+    @controller = ArticlesController.new
+  end
+
+  test "should authenticate get edit" do
+    get :edit, id: @article
+    assert_redirected_to new_author_session_url
+  end
+
+  test "should authenticate update article" do
+    patch :update, id: @article, article: { body: @article.body, title: @article.title }
+    assert_redirected_to new_author_session_url
+  end
+
+  test "should authenticate destroy article" do
+    delete :destroy, id: @article
+    assert_redirected_to new_author_session_url
+  end
+
+  test "should authenticate get new" do
+    get :new
+    assert_redirected_to new_author_session_url
+  end
+
+  test "should authenticate create article" do
+    post :create, article: { body: 'Hi', title:'1st post' }
+    assert_redirected_to new_author_session_url
   end
 end
