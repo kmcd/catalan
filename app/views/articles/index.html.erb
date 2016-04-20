@@ -20,7 +20,7 @@
     </p>
     
     <div class="summary">
-      <% cache [ @article, :body ] do %>
+      <% cache [ article, :body ] do %>
         <%= Redcarpet::Markdown.
               new(Redcarpet::Render::HTML).
               render(truncate(article.body)).
